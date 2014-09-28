@@ -65,9 +65,12 @@ def parse_xml(filename):
   global itvalue
   try:
     itvalue += 1
+    
     for event,elem in cxml.iterparse(filename):
       if elem.tag == 'page':
         #print elem.attrib
+        pgid = elem.attrib['id']
+        print "page no is" , pgid
         for node in elem.findall('./region/section/line'):
           # node.text  will have unsanitized <line> information.
           for line in node.itertext():
@@ -77,8 +80,17 @@ def parse_xml(filename):
             #print "after sanitization =>", san_string
             if san_string == None or san_string == ' ': continue
             else:
+              """
+              The list is a value of dictionary which holds
+              l = [word count , page count , book count]
+              """
               for i in san_string.split(' '): #populating the dictionary of words
-                dword[i] = dword.get(i,0) + 1
+                if dword.has_key(i):
+                  dword[i][0] += 1 
+                  dword[i][1].add(pgid)
+                else:
+                  dword[i] = [1,set([pgid]),1]
+                  
           """
           for t in tokenize.generate_tokens(iter([node.text]).next):
             if token.tok_name[t[0]] == 'STRING':
@@ -87,10 +99,18 @@ def parse_xml(filename):
           """
   except:
     print filename , "is having Encoding problems or parsing errors"
+    return dword
   #all_objects = muppy.get_objects()
   #sum1 = summary.summarize(all_objects)
   print "Iteration " , itvalue
   #summary.print_(sum1)
+  #Counting the length of all the pages the word has occured and sending only the total
+  #count  of it
+  for k,v in dword.items():
+    temp = dword[k]
+    temp[1] = len(temp[1])
+    dword[k] = temp
+
   return dword
 
 
@@ -104,8 +124,21 @@ if __name__ == '__main__':
   final_dword = collections.Counter()
   #map(final_dword.update,dword_list)
   #final_dword = dict(kv for d in dictlist for kv in d.iteritems())
+  for d in dword_list:
+    for k,v in d.items():
+      if final_dword.has_key(k):
+        dv = final_dword[k]
+        final_dword[k] = [sum(i) for i in zip(v,dv)]
+      else:
+        final_dword[k] = v 
+  """
   for i in dword_list:
     final_dword.update(i)
+  """
+
+
+
+
   """
   print "dumping dword_list into pickle format"
   with open('word_count_big_list.pickle', 'wb') as handle:
@@ -114,9 +147,12 @@ if __name__ == '__main__':
   """
   #print final_dword
   print "The final Word Count List is calculated ", len(final_dword)
-  print "total no of tokens" , sum(final_dword.values())
+  print "total no of tokens" , sum(l[0] for l in final_dword.values())
   print "most common words are ", final_dword.most_common(50)
-  print "no => " , final_dword['no']
+  
+  l = ['powerful' , 'strong' , 'butter' , 'salt', 'washington', 'james', 'church']
+  for i in l:
+    print  i , "=> " , final_dword[i]
 
 
 
