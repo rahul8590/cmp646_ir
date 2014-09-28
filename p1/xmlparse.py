@@ -13,7 +13,7 @@ import multiprocessing as mp
 import collections 
 import cPickle as pickle
 import tokenize , token
-
+from xml.sax.saxutils import unescape
 
 from pympler import summary
 from pympler import muppy
@@ -49,6 +49,7 @@ def populate_dict(word):
 def sanitize_line(line_n):
    if line_n == None or line_n == ' ': return None
    line1 = str(line_n)
+   line1 = unescape(line1,{"&quot;": " "})
    #line1 = line1.lower()
    #print "the line is ", line1
    #rx = re.compile('\W+') #Getting only alphanumeric letters first
