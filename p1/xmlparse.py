@@ -17,7 +17,7 @@ import tokenize , token
 
 from pympler import summary
 from pympler import muppy
-
+from operator import itemgetter
 
 
 """
@@ -89,8 +89,7 @@ def parse_xml(filename):
                   dword[i][0] += 1 
                   dword[i][1].add(pgid)
                 else:
-                  dword[i] = [1,set([pgid]),1]
-                  
+                  dword[i] = [1,set([pgid]),1]          
           """
           for t in tokenize.generate_tokens(iter([node.text]).next):
             if token.tok_name[t[0]] == 'STRING':
@@ -151,8 +150,16 @@ if __name__ == '__main__':
   print "most common words are ", final_dword.most_common(50)
   
   l = ['powerful' , 'strong' , 'butter' , 'salt', 'washington', 'james', 'church']
-  for i in l:
-    print  i , "=> " , final_dword[i]
+  
+  #Sorting the entire dictionary to get the values of elements of l
+  sorted_word = sorted(final_dword.items(),key=itemgetter(1), reverse=True)
+
+  for i in range(0,len(sorted_word)):
+    for w in l:
+      if sorted_word[i][0] == w:
+        print w , "=>" , sorted_word[i] , "index =>" , i
+
+
 
 
 
