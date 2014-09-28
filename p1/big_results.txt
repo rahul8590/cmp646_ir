@@ -9,3 +9,12 @@ strong => ('strong', [78552, 67385, 2352]) index => 516
 powerful => ('powerful', [29446, 26786, 1992]) index => 1420
 salt => ('salt', [19546, 12565, 1593]) index => 2139
 butter => ('butter', [4591, 3440, 912]) index => 7421
+
+
+
+""" Need to check on this xml file
+/rahul_extra/books-big/D3FA3CC0C1631327/maistrepierrepat00pathuoft_ocrml.xml is having Encoding problems or parsing errors
+"""
+
+
+
