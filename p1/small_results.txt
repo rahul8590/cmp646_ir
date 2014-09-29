@@ -109,9 +109,16 @@ Adjancey Statistics
 
 (('washington', 'd'), 203), 
 (('washington', 'city'), 47),
+(('washington', 'irving'), 34),
+(('washington', 'where'), 32),
+(('washington', 'union'), 24),
+
 
 (('salt', 'lake'), 202), 
 (('salt', 'water'), 75), 
+(('salt', 'fish'), 35),
+(('salt', 'works'), 32),
+(('salt', 'meat'), 31),
 
 
 (('strong', 'enough'), 159),
@@ -121,6 +128,8 @@ Adjancey Statistics
 (('strong', 'line'), 55),
 (('strong', 'man'), 53),
 (('strong', 'men'), 37),
+(('strong', 'skirmish'), 27)
+(('strong', 'arm'), 26),
 
 (('church', 'before'), 56),
 (('church', 'chapel'), 50),
@@ -133,3 +142,7 @@ Adjancey Statistics
 
 (('powerful', 'influence'), 40),
 (('powerful', 'than'), 36), 
+(('powerful', 'army'), 30),
+(('powerful', 'enough'), 29),
+(('powerful', 'enemy'), 18)
+

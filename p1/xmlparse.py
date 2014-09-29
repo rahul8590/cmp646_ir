@@ -13,21 +13,24 @@ import multiprocessing as mp
 import collections 
 import cPickle as pickle
 import tokenize , token
-from xml.sax.saxutils import unescape
+import logging
 
+from xml.sax.saxutils import unescape
 from pympler import summary
 from pympler import muppy
 from operator import itemgetter
 
 
-"""
-dict_word['word'] = [[(book_name,[page_nos]),
-                      (book_name,page_no)],
-                      count]
-"""
+
+#Initializing Logger in here
+logger = logging.getLogger('myapp')
+hdlr = logging.FileHandler('./xml_parse.log')
+formatter = logging.Formatter('rar small %(message)s')
+hdlr.setFormatter(formatter)
+logger.addHandler(hdlr) 
+logger.setLevel(logging.DEBUG)
 
 #All the global variables will be declared in here 
-#dword = {}
 itvalue = 0
 #-------------------------------------------------
 
@@ -38,40 +41,26 @@ def locate (pattern,root=os.curdir):
     for filename in fnmatch.filter(files,pattern):
       yield os.path.join(path,filename)
 
-"""
-#Word Count
-def populate_dict(word):
-  dword[word] = dword.get(word,0) + 1
-"""
-
 
 #line is a simple string which can get junk characters
 def sanitize_line(line_n):
    if line_n == None or line_n == ' ': return None
    line1 = str(line_n)
    line1 = unescape(line1,{"&quot;": " "})
-   #line1 = line1.lower()
-   #print "the line is ", line1
-   #rx = re.compile('\W+') #Getting only alphanumeric letters first
-   #line_ascii = re.sub(r'[^\x00-\x7F]+',' ', line1)  #Remove non-ascii elements from string
-   #rnos = re.compile('[0-9]')
    rline = re.sub('\W+',' ',line1).strip().lower()
-   #nline = rnos.subl(' ',rline).strip() #Only words and possible extra whitespaces. 
-   #re.sub(' +', ' ',nline)
    return rline #string 
 
-
+#Main file for xml parsing
 def parse_xml(filename):
   dword = {}
   global itvalue
   try:
     itvalue += 1
-    
     for event,elem in cxml.iterparse(filename):
       if elem.tag == 'page':
         #print elem.attrib
         pgid = elem.attrib['id']
-        print "page no is" , pgid
+        #print "page no is" , pgid
         for node in elem.findall('./region/section/line'):
           # node.text  will have unsanitized <line> information.
           for line in node.itertext():
@@ -90,15 +79,10 @@ def parse_xml(filename):
                   dword[i][0] += 1 
                   dword[i][1].add(pgid)
                 else:
-                  dword[i] = [1,set([pgid]),1]          
-          """
-          for t in tokenize.generate_tokens(iter([node.text]).next):
-            if token.tok_name[t[0]] == 'STRING':
-              dword[t[1]] = dword.get(t[1],0) + 1
-              print t[1]
-          """
-  except:
-    print filename , "is having Encoding problems or parsing errors"
+                  dword[i] = [1,set([pgid]),1]
+  except e:
+    logger.error(filename , "is having Encoding problems or parsing errors")
+    logger.error(e)
     return dword
   #all_objects = muppy.get_objects()
   #sum1 = summary.summarize(all_objects)
@@ -131,23 +115,20 @@ if __name__ == '__main__':
         final_dword[k] = [sum(i) for i in zip(v,dv)]
       else:
         final_dword[k] = v 
-  """
-  for i in dword_list:
-    final_dword.update(i)
-  """
+  
 
-
-
-
-  """
-  print "dumping dword_list into pickle format"
-  with open('word_count_big_list.pickle', 'wb') as handle:
-    pickle.fast = True 
-    pickle.dump(dword_list, handle)
-  """
+  tu = len(final_dword)
+  to = sum(l[0] for l in final_dword.values())
   #print final_dword
-  print "The final Word Count List is calculated ", len(final_dword)
-  print "total no of tokens" , sum(l[0] for l in final_dword.values())
+  logger.info("TO "+str(tu))
+  logger.info("TU "+str(to))
+  most_common_list = final_dword.most_common(50)
+  for i in range(0,len(most_common_list)):
+    s = str(i+1)+" "+str(most_common_list[i][0])+" "+str(most_common_list[i][1][2])+" "+str(most_common_list[i][1][1])+" "+str(most_common_list[i][1][0])
+    logger.info(s)
+
+  print "The final Word Count List is calculated ", tu
+  print "total no of tokens" , to
   print "most common words are ", final_dword.most_common(50)
   
   l = ['powerful' , 'strong' , 'butter' , 'salt', 'washington', 'james', 'church']
@@ -159,13 +140,12 @@ if __name__ == '__main__':
     for w in l:
       if sorted_word[i][0] == w:
         print w , "=>" , sorted_word[i] , "index =>" , i
-
-
+        s = str(i)+" "+str(w)+" "+str(sorted_word[i][1][2]) + " " + str(sorted_word[i][1][1]) + " " + str(sorted_word[i][1][0])
+        logger.info(s)
 
 
 
 #/rahul_extra/books-big/D3FA3CC0C1631327/maistrepierrepat00pathuoft_ocrml.xml
-
 """
 To find the maximum elements of the final_dword aka fwc 
 import operator
