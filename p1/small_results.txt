@@ -73,3 +73,63 @@ the most common words in same chunk as james  is [('col', 329), ('ii', 237), ('l
 
 the most common words in same chunk as washington  is [('c', 221), ('d', 191), ('may', 85), ('mr', 75), ('city', 72), ('new', 63), ('near', 60), ('upon', 57), ('march', 56), ('general', 55)]
 
+the most common words in same chunk as salt  is [('lake', 196), ('water', 95), ('city', 67), ('works', 40), ('fish', 39), ('some', 33), ('great', 33), ('000', 31), ('sugar', 30), ('meat', 29)]
+
+the most common words in same chunk as butter  is [('cheese', 33), ('trade', 26), ('cattle', 16), ('corn', 15), ('bread', 14), ('milk', 13), ('some', 11), ('pop', 10), ('per', 10), ('grain', 8)]
+
+the most common words in same chunk as strong  is [('very', 128), ('force', 118), ('line', 107), ('enough', 101), ('enemy', 99), ('one', 92), ('position', 90), ('made', 74), ('man', 73), ('her', 70)]
+
+the most common words in same chunk as powerful  is [('most', 131), ('more', 81), ('one', 56), ('than', 39), ('influence', 31), ('very', 27), ('great', 26), ('her', 25), ('army', 24), ('my', 24)]
+
+
+
+Adjancey Statistics
+----------------------
+
+('james', 'ii'), 233), 
+(('james', 'river'), 83), 
+(('james', 'h'), 79), 
+(('james', 'm'), 78), 
+(('james', 'w'), 76)
+(('james', 'l'), 63),
+(('james', 'c'), 58), 
+(('james', 'e'), 53), 
+(('james', 'vi'), 52),
+(('james', 'v'), 44), (('james', 'p'), 42), (('james', 'whitcomb'), 42),
+(('james', 'island'), 39),
+
+
+(('church', 'identified'), 209), 
+(('church', 'pop'), 173),
+(('church', 'townhouse'), 83),
+(('church', 'two'), 78),
+(('church', 'yard'), 78),
+(('church', 'property'), 71),
+
+
+(('washington', 'd'), 203), 
+(('washington', 'city'), 47),
+
+(('salt', 'lake'), 202), 
+(('salt', 'water'), 75), 
+
+
+(('strong', 'enough'), 159),
+(('strong', 'position'), 76), 
+(('strong', 'force'), 72), 
+(('strong', 'castle'), 60), 
+(('strong', 'line'), 55),
+(('strong', 'man'), 53),
+(('strong', 'men'), 37),
+
+(('church', 'before'), 56),
+(('church', 'chapel'), 50),
+(('church', 'built'), 46), 
+(('church', 'must'), 44),
+(('church', 'where'), 44), 
+(('church', 'manufactures'), 40), 
+(('church', 'itself'), 39)
+
+
+(('powerful', 'influence'), 40),
+(('powerful', 'than'), 36), 
