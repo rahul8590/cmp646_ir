@@ -30,14 +30,6 @@ salt => ('salt', [1038, 658, 58]) index => 1459
 butter => ('butter', [225, 187, 34]) index => 5824
 
 
-
-
-
-
-
-
-
-
 Page Statistics
 -------------------
 
@@ -49,3 +41,35 @@ the most common words in same page as james in chunks  [('col', 266869), ('w', 2
 the most common words in same page as washington in chunks  [('general', 56694), ('new', 46821), ('states', 45115), ('w', 44874), ('c', 43730), ('n', 42892), ('m', 36798), ('army', 35976), ('march', 35680), ('may', 35591)]
 
 the most common words in same page as salt in chunks  [('m', 244473), ('n', 241735), ('e', 218357), ('pop', 196695), ('w', 185838), ('about', 102541), ('two', 100667), ('tn', 96382), ('ac', 80480), ('one', 78382)]
+
+
+
+
+Page Statistics (latest):
+------------------------
+the most common words in same page as james  is [('col', 266869), ('w', 235331), ('m', 160325), ('c', 143584), ('lieut', 131649), ('n', 125966), ('john', 124396), ('j', 122055), ('william', 100757), ('brigade', 100388)]
+
+the most common words in same page as church  is [('m', 658960), ('n', 573768), ('pop', 549273), ('e', 526961), ('w', 474309), ('two', 276015), ('about', 264715), ('tn', 257899), ('one', 247557), ('ac', 241189)]
+
+
+
+the most common words in same page as powerful is [('one', 55660), ('more', 44420), ('great', 42382), ('other', 39634), ('into', 36679), ('most', 35748), ('may', 35270), ('than', 34713), ('will', 33327), ('if', 32987)]
+
+
+the most common words in same page as strong  is [('m', 235431), ('n', 214743), ('e', 200458), ('one', 189852), ('w', 189848), ('pop', 174013), ('two', 151483), ('other', 137656), ('into', 133093), ('some', 130335)]
+
+the most common words in same page as butter  is [('m', 73611), ('w', 62801), ('n', 62071), ('pop', 59739), ('e', 52329), ('2', 28460), ('about', 28039), ('ac', 27300), ('two', 26353), ('church', 24871)]
+
+
+the most common words in same page as washington  is [('general', 56694), ('new', 46821), ('states', 45115), ('w', 44874), ('c', 43730), ('n', 42892), ('m', 36798), ('army', 35976), ('march', 35680), ('may', 35591)]
+
+
+Chunk Statistics
+-----------------
+
+the most common words in same chunk as church  is [('parish', 1017), ('contains', 546), ('catholic', 498), ('england', 320), ('r', 299), ('pop', 277), ('two', 276), ('school', 274), ('m', 265), ('st', 234)]
+
+the most common words in same chunk as james  is [('col', 329), ('ii', 237), ('lieut', 168), ('w', 167), ('sir', 137), ('st', 133), ('c', 129), ('m', 114), ('capt', 111), ('mentioned', 108)]
+
+the most common words in same chunk as washington  is [('c', 221), ('d', 191), ('may', 85), ('mr', 75), ('city', 72), ('new', 63), ('near', 60), ('upon', 57), ('march', 56), ('general', 55)]
+

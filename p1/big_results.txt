@@ -33,6 +33,13 @@ sys	0m25.850s
 
 
 
+Word Pair statistics
+----------------------
+
+the most common words in same page as church in chunks  [('n', 6676859), ('one', 6108186), ('d', 5525400), ('2', 5352430), ('new', 5102946), ('st', 4925435), ('john', 4605994), ('de', 4521726), ('c', 4504563), ('b', 4424634)]
+
+the most common words in same page as strong  is [('m', 235431), ('n', 214743), ('e', 200458), ('one', 189852), ('w', 189848), ('pop', 174013), ('two', 151483), ('other', 137656), ('into', 133093), ('some', 130335)]
+
 
 
 
