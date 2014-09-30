@@ -58,38 +58,38 @@ rar small 540 washington 55 1615 2691
 rar small 1289 powerful 84 1079 1177
 rar small 1459 salt 58 658 1038
 rar small 5824 butter 34 187 225
-rar small powerful one
-rar small powerful more
-rar small powerful great
-rar small powerful other
-rar small powerful into
-rar small strong m
-rar small strong n
-rar small strong e
-rar small strong one
-rar small strong w
-rar small butter m
-rar small butter w
-rar small butter n
-rar small butter pop
-rar small butter e
-rar small salt m
-rar small salt n
-rar small salt e
-rar small salt pop
-rar small salt w
-rar small washington general
-rar small washington new
-rar small washington states
-rar small washington w
-rar small washington c
-rar small james col col
-rar small james w ii
-rar small james m lieut
-rar small james c sir
-rar small james lieut st
-rar small church m parish 
-rar small church n contains
-rar small church pop catholic
-rar small church e england
-rar small church w r
+rar small powerful one most influence
+rar small powerful more more than
+rar small powerful great one army
+rar small powerful other than enough
+rar small powerful into influence enemy
+rar small strong m very enough
+rar small strong n force position
+rar small strong e line force
+rar small strong one enough castle
+rar small strong w enemy line
+rar small butter m cheese
+rar small butter w trade
+rar small butter n cattle
+rar small butter pop corn
+rar small butter e bread
+rar small salt m lake lake
+rar small salt n water water
+rar small salt e city fish
+rar small salt pop works works
+rar small salt w fish meat
+rar small washington general c d 
+rar small washington new d city
+rar small washington states may irving
+rar small washington w mr where
+rar small washington c city union
+rar small james col col ii
+rar small james w ii river
+rar small james m lieut h
+rar small james c sir m
+rar small james lieut st w
+rar small church m parish identified
+rar small church n contains pop
+rar small church pop catholic townhouse
+rar small church e england two
+rar small church w r yard
