@@ -52,7 +52,6 @@ the most common words in same page as james  is [('col', 266869), ('w', 235331),
 the most common words in same page as church  is [('m', 658960), ('n', 573768), ('pop', 549273), ('e', 526961), ('w', 474309), ('two', 276015), ('about', 264715), ('tn', 257899), ('one', 247557), ('ac', 241189)]
 
 
-
 the most common words in same page as powerful is [('one', 55660), ('more', 44420), ('great', 42382), ('other', 39634), ('into', 36679), ('most', 35748), ('may', 35270), ('than', 34713), ('will', 33327), ('if', 32987)]
 
 
