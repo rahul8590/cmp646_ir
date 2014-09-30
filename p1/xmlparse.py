@@ -46,6 +46,7 @@ def locate (pattern,root=os.curdir):
 def sanitize_line(line_n):
    if line_n == None or line_n == ' ': return None
    line1 = str(line_n)
+   line1 = line1.replace('-','').replace('`','')
    line1 = unescape(line1,{"&quot;": " "})
    rline = re.sub('\W+',' ',line1).strip().lower()
    return rline #string 
