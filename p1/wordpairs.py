@@ -15,19 +15,23 @@ import cPickle as pickle
 import tokenize , token
 import nltk
 
+import logging
+
+from xml.sax.saxutils import unescape
 from pympler import summary
 from pympler import muppy
 from operator import itemgetter
 
 
-"""
-dict_word['word'] = [[(book_name,[page_nos]),
-                      (book_name,page_no)],
-                      count]
-"""
 
 #All the global variables will be declared in here 
-#dword = {}
+logger = logging.getLogger('myapp')
+hdlr = logging.FileHandler('./xml_parse.log')
+formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+hdlr.setFormatter(formatter)
+logger.addHandler(hdlr) 
+logger.setLevel(logging.WARNING)
+
 itvalue = 0
 #-------------------------------------------------
 
@@ -37,100 +41,86 @@ def locate (pattern,root=os.curdir):
   for path,dirs,files,in os.walk(os.path.abspath(root)):
     for filename in fnmatch.filter(files,pattern):
       yield os.path.join(path,filename)
-  #  yield "/home/rahul/Downloads/IR /books-tiny/45A51C0188630559/worksofbretharte07hartrich_ocrml.xml"
-
-"""
-#Word Count
-def populate_dict(word):
-  dword[word] = dword.get(word,0) + 1
-"""
-
-
+  
 #line is a simple string which can get junk characters
 def sanitize_line(line_n):
    if line_n == None or line_n == ' ': return None
    line1 = str(line_n)
-   #line1 = line1.lower()
-   #print "the line is ", line1
-   #rx = re.compile('\W+') #Getting only alphanumeric letters first
-   #line_ascii = re.sub(r'[^\x00-\x7F]+',' ', line1)  #Remove non-ascii elements from string
-   #rnos = re.compile('[0-9]')
+   line1 = unescape(line1,{"&quot;": " "})
    rline = re.sub('\W+',' ',line1).strip().lower()
-   #nline = rnos.subl(' ',rline).strip() #Only words and possible extra whitespaces. 
-   #re.sub(' +', ' ',nline)
    return rline #string 
-
-
-
-
-wp = ['powerful' , 'strong' , 'butter' , 'salt', 'washington', 'james', 'church']
-stop_list = []
-
 
 def page_stat(filename):
   dword = {}
-  for event,elem in cxml.iterparse(filename):
-     if elem.tag == 'page':
-       #print elem.attrib
-       pgid = elem.attrib['id']
-       #print "page no is" , pgid
-       page_buffer = ' '
-       for node in elem.findall('./region/section/line'):
-         # node.text  will have unsanitized <line> information.
-         for line in node.itertext():
-           #commenting the regular procedure to sanitize string
-           #print "node to be sanitizes =>" , node.text
-           san_string = sanitize_line(line)
-           #print "after sanitization =>", san_string
-           if san_string == None or san_string == ' ': continue
-           else:
-             page_buffer += san_string + ' '
-             if "church" in page_buffer:
+  wp = ['powerful' , 'strong' , 'butter' , 'salt', 'washington', 'james', 'church']
+  try:
+    for event,elem in cxml.iterparse(filename):
+       if elem.tag == 'page':
+         #print elem.attrib
+         #pgid = elem.attrib['id']
+         #print "page no is" , pgid
+         page_buffer = ' '
+         for node in elem.findall('./region/section/line'):
+           # node.text  will have unsanitized <line> information.
+           for line in node.itertext():
+             #commenting the regular procedure to sanitize string
+             #print "node to be sanitizes =>" , node.text
+             san_string = sanitize_line(line)
+             #print "after sanitization =>", san_string
+             if san_string == None or san_string == ' ': continue
+             else:
+               page_buffer += san_string + ' '
+
+         #if any(sword in page_buffer for sword in wp):
+         for sword in wp:
+            if sword in page_buffer:
               for word in page_buffer.split(' '):
-                if word in stop_list or word == 'church' or word == '': continue
-                dword[word] = dword.get(word,0) + 1
+                if word in stop_list or word == sword or word == '': continue
+                dword[(sword,word)] = dword.get((sword,word),0) + 1
+  except:
+    print "There is been an parsing error for the file" , filename
+    logger.error(filename +"is having Encoding problems or parsing errors")
+    
   return dword
-
-
 
 def chunk_stat(filename):
   dword = {}
-  for event,elem in cxml.iterparse(filename):
-     if elem.tag == 'page':
-       #print elem.attrib
-       pgid = elem.attrib['id']
-       #print "page no is" , pgid
-       page_buffer = ' '
-       for node in elem.findall('./region/section/line'):
-         # node.text  will have unsanitized <line> information.
-         for line in node.itertext():
-           #commenting the regular procedure to sanitize string
-           #print "node to be sanitizes =>" , node.text
-           san_string = sanitize_line(line)
-           #print "after sanitization =>", san_string
-           if san_string == None or san_string == ' ': continue
-           else:
-            word_list  = san_string.split(' ')
-            l20 = [word_list[i:i + 20] for i in range(0, len(word_list), 20)]
+  sword = "powerful"
+  try:
 
-            for chunk in l20:
-              if "washington" in chunk:
-                for word in chunk:
-                  if word in stop_list or word == 'washington' or word == '': continue
-                  dword[word] = dword.get(word,0) + 1
+    for event,elem in cxml.iterparse(filename):
+       if elem.tag == 'page':
+         #print elem.attrib
+         pgid = elem.attrib['id']
+         #print "page no is" , pgid
+         page_buffer = ' '
+         for node in elem.findall('./region/section/line'):
+           # node.text  will have unsanitized <line> information.
+           for line in node.itertext():
+             #commenting the regular procedure to sanitize string
+             #print "node to be sanitizes =>" , node.text
+             san_string = sanitize_line(line)
+             #print "after sanitization =>", san_string
+             if san_string == None or san_string == ' ': continue
+             else:
+              word_list  = san_string.split(' ')
+              l20 = [word_list[i:i + 20] for i in range(0, len(word_list), 20)]
+
+              for chunk in l20:
+                if sword in chunk:
+                  for word in chunk:
+                    if word in stop_list or word == sword or word == '': continue
+                    dword[word] = dword.get(word,0) + 1
+  except:
+    print "There is been an parsing error for the file" , filename
+    logger.error(filename , "is having Encoding problems or parsing errors")
+
   return dword
-
-
-
-
-
 
 def parse_xml(filename):
   dword = {}
   global itvalue
   ddist = {} #Frequence distribution of the word
-
-  
 
   #print "the stop_list is ", stop_list
   
@@ -142,8 +132,7 @@ def parse_xml(filename):
         #print elem.attrib
         pgid = elem.attrib['id']
         #print "page no is" , pgid
-        page_buffer = ' '
-
+        page_buffer = ''
         for node in elem.findall('./region/section/line'):
           # node.text  will have unsanitized <line> information.
           for line in node.itertext():
@@ -153,7 +142,7 @@ def parse_xml(filename):
             #print "after sanitization =>", san_string
             if san_string == None or san_string == ' ': continue
             else:
-              page_buffer += san_string + ' '
+              page_buffer += san_string 
               """
               The list is a value of dictionary which holds
               l = [word count , page count , book count]
@@ -166,12 +155,6 @@ def parse_xml(filename):
                 else:
                   dword[i] = [1,set([pgid]),1]          
               """
-          """
-          for t in tokenize.generate_tokens(iter([node.text]).next):
-            if token.tok_name[t[0]] == 'STRING':
-              dword[t[1]] = dword.get(t[1],0) + 1
-              print t[1]
-          """
         wordlist = page_buffer.split(' ')
         pairs = nltk.bigrams(wordlist)
         fdist = nltk.FreqDist(pairs)
@@ -224,30 +207,54 @@ def parse_xml(filename):
   return ddist
 
 
-
-
 if __name__ == '__main__':
+  
+  wp = ['powerful' , 'strong' , 'butter' , 'salt', 'washington', 'james', 'church']
+  
+  stop_list = []
+  
+  #populating pair dictionaries to store counter collections
+  pair_dict = {i:[] for i in wp}
 
   file_stop_list = open('stopwords.list.sorted' ,'r')
   for i in file_stop_list:
     i = i.strip('\n')
     stop_list.append(i)
+  
+
   numthreads = 2  
   pool = mp.Pool(processes=numthreads)
   
   #dword_list = pool.map(parse_xml, (locate("*.xml")))
-
-  #dword_list = pool.map(page_stat, (locate("*.xml")))
-
-  dword_list = pool.map(chunk_stat, (locate("*.xml")))
-  
-
-
-
-  #final_dword = bsddb.btopen('wordc','c')
-  
+  #dword_list = pool.map(chunk_stat, (locate("*.xml")))
+  #sword = "church"
+  dword_list = pool.map(page_stat, (locate("*.xml")))
   final_dword = collections.Counter()
+  for i in dword_list:
+    final_dword.update(i)
   
+
+  #sorted_word = sorted(final_dword.items(),key=itemgetter(1), reverse=True)
+
+  for cword in wp:
+    clist = [i for i in final_dword.items() if i[0] == cword]
+    #clist = sorted(final_dword.items(),key=lambda(k,v): k[0] == cword)
+    #print clist
+    print "the pairs in ",cword 
+    print clist[0:5],
+  """
+  most_common = final_dword.most_common(200)
+  print "the most common words are", most_common
+
+  for cword in wp:
+    count = 0
+    for i in most_common:
+      if count > 5: continue
+      if i[0][0] == cword:
+        print i
+        count += 1
+  """
+
   #map(final_dword.update,dword_list)
   #final_dword = dict(kv for d in dictlist for kv in d.iteritems())
   """
@@ -260,10 +267,7 @@ if __name__ == '__main__':
         final_dword[k] = v 
   """
   
-  for i in dword_list:
-    final_dword.update(i)
   
-  print "the most common words in same page as church in chunks ", final_dword.most_common(10)
 
 
 

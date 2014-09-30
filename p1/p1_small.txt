@@ -58,3 +58,38 @@ rar small 540 washington 55 1615 2691
 rar small 1289 powerful 84 1079 1177
 rar small 1459 salt 58 658 1038
 rar small 5824 butter 34 187 225
+rar small powerful one
+rar small powerful more
+rar small powerful great
+rar small powerful other
+rar small powerful into
+rar small strong m
+rar small strong n
+rar small strong e
+rar small strong one
+rar small strong w
+rar small butter m
+rar small butter w
+rar small butter n
+rar small butter pop
+rar small butter e
+rar small salt m
+rar small salt n
+rar small salt e
+rar small salt pop
+rar small salt w
+rar small washington general
+rar small washington new
+rar small washington states
+rar small washington w
+rar small washington c
+rar small james col col
+rar small james w ii
+rar small james m lieut
+rar small james c sir
+rar small james lieut st
+rar small church m parish 
+rar small church n contains
+rar small church pop catholic
+rar small church e england
+rar small church w r
