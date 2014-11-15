@@ -20,6 +20,16 @@ def cal_avgp(l):
   if rcount == 0: return 0.0
   return avgp/rcount
 
+#def precesion@10
+def p10(l):
+  l10 = l[0:10]
+  rcount = 0.0
+  for i in l10:
+    if relcal(i) == 'r':
+      rcount += 1.0
+  return rcount/10.0
+
+
 #Calc MeanAvg Precesion
 def mean_avg_prec(d):
   avgp = {}
@@ -51,3 +61,10 @@ if __name__ == '__main__':
 
   print d 
   mean_avg_prec(d)
+
+  print "precesion @ 10 is "
+  for k in d:
+    print k," =>" , p10(d[k])
+
+  print "testing 6" , d[6]
+
