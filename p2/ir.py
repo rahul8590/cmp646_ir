@@ -25,7 +25,7 @@ f = open(sys.argv[1] , 'r')
 d = {}
 for i in f:
   i = re.sub(' +',' ',i)
-  i = i.strip().split(' ')
+  i = i.strip(' ').split(' ')
   print i
   if d.has_key(int(i[0])):
     rno = d[int(i[0])]
@@ -40,6 +40,13 @@ for k in d:
   avgp[k] = cal_avgp(d[k])
 
 print "the avg precsion is " , avgp
+
+meanavg = 0 
+for k in avgp:
+  meanavg += avgp[k]
+meanavg /= len(avgp)
+
+print "mean avg precesion is " , meanavg
 
 
 
