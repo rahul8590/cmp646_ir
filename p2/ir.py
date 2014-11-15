@@ -32,6 +32,14 @@ def p10(l):
 
 #ndcg@20 
 def ndcg20(l,sort='no'):
+  #print "length is ",len(l)
+  #Adding case if the length of the rereived documents is less than 20
+  #I am padding those values with 0.
+  if len(l) < 20:
+    pad = 20 - len(l)
+    for i in range(0,pad):
+      l.append(0)
+
   if sort == 'sort':
     l = l[:20]
     l.sort(reverse=True)
@@ -65,10 +73,10 @@ if __name__ == '__main__':
     if d.has_key(int(i[0])):
       rno = []
       rno = d[int(i[0])]
-      rno.append(int(i[3]))  #i[3] for robust04. else its i[2]
+      rno.append(int(i[2]))  #i[3] for robust04. else its i[2]
       d[int(i[0])] = rno
     else:
-      d[int(i[0])] = [int(i[3])] #i[3] for robust04. else its i[2]
+      d[int(i[0])] = [int(i[2])] #i[3] for robust04. else its i[2]
 
   print d 
   mean_avg_prec(d)
