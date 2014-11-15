@@ -1,6 +1,7 @@
 #!/bin/python
 import sys
 import re 
+import math
 
 #Relevance Calculator
 def relcal(v):
@@ -29,6 +30,16 @@ def p10(l):
       rcount += 1.0
   return rcount/10.0
 
+#ndcg@20 
+def ndcg20(l,sort='no'):
+  if sort == 'sort':
+    l = l[0:20]
+    l = l.sort(reverse=True)
+
+  nval =  float(l[0]) + 0.0 #Initializing to r1 value
+  for i in range(1,20):
+      nval += l[i] / (math.log10(i+1.0) / math.log10(2.0) )
+  return nval
 
 #Calc MeanAvg Precesion
 def mean_avg_prec(d):
@@ -66,5 +77,7 @@ if __name__ == '__main__':
   for k in d:
     print k," =>" , p10(d[k])
 
-  print "testing 6" , d[6]
+  print "ndcg@20 is "
+  for k in d:
+    print k , "=>" , ndcg20(d[k])
 
