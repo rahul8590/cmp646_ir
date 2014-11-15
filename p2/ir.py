@@ -33,8 +33,8 @@ def p10(l):
 #ndcg@20 
 def ndcg20(l,sort='no'):
   if sort == 'sort':
-    l = l[0:20]
-    l = l.sort(reverse=True)
+    l = l[:20]
+    l.sort(reverse=True)
 
   nval =  float(l[0]) + 0.0 #Initializing to r1 value
   for i in range(1,20):
@@ -79,5 +79,5 @@ if __name__ == '__main__':
 
   print "ndcg@20 is "
   for k in d:
-    print k , "=>" , ndcg20(d[k])
+    print k , "=>" , ndcg20(d[k],'sort')
 
