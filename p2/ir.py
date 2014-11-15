@@ -60,15 +60,15 @@ if __name__ == '__main__':
   d = {}
   for i in f:
     i = re.sub(' +',' ',i)
-    i = i.strip(' ').split(' ')
-    print i
+    i = i.strip(' \n').split(' ')
+    #print i
     if d.has_key(int(i[0])):
       rno = []
       rno = d[int(i[0])]
-      rno.append(int(i[2]))
+      rno.append(int(i[3]))  #i[3] for robust04. else its i[2]
       d[int(i[0])] = rno
     else:
-      d[int(i[0])] = [int(i[2])]
+      d[int(i[0])] = [int(i[3])] #i[3] for robust04. else its i[2]
 
   print d 
   mean_avg_prec(d)
