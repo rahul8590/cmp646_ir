@@ -31,10 +31,14 @@ def abs_graph(qname,j20,i20):
   ind = np.arange(len(df))
   width = 0.4
   fig, ax = plt.subplots()
-  ax.barh(ind, df.n, width, alpha=0.4,color='red', label='j20')
-  ax.barh(ind + width, df.m, width, alpha=0.4,color='green', label='i20')
+  ax.barh(ind, df.n, width, alpha=0.4,color='red', label='Qrel20')
+  ax.barh(ind + width, df.m, width, alpha=0.4,color='green', label='Indri20')
   ax.set(yticks=ind + width, yticklabels=df.graph, ylim=[2*width - 1, len(df)])
+  ax.set_xlim([0,20])
   ax.legend()
+  plt.xlabel('No of Relevant Documents')
+  plt.ylabel('Query No')
+  plt.title('Absolute No of Relevant Documents Retrieved in Top20')
   plt.show()
 
 
