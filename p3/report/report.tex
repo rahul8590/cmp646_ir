@@ -151,9 +151,7 @@ according to the new terms found in the retrieved documents. The next probe quer
 
 
 
-The algorithm has many open ended choices which needs to be tuned. For example, how to select query terms 
-and how to select documents to examin per query and most importantly \textit{when to stop sampling}.
-Callan et al suggested that assigning $N = 4$  and  $StopCriteria = 75$ Docs i.e examining a total of 300 documents will be a good representation of the collection.
+Callan et al suggested that assigning $N = 4$  and  $StopCriteria = 75$ Docs i.e examining a total of 300 documents will be a good representation of the collection. The algorithm has many open ended choices which needs to be tuned. For example, how to select query terms and how to select documents to examin per query and most importantly \textit{when to stop sampling}. In the subsequent sections we will evaluate sampling techniques mentioned by Callan et al and adaptive query probing techniques by Milad et al [2]. 
 
 
 \section{Sampling Techniques}
@@ -164,11 +162,26 @@ Callan et al suggested that assigning $N = 4$  and  $StopCriteria = 75$ Docs i.e
 
 Use \texttt{section}s and \texttt{subsection}s to organize your document. \LaTeX{} handles all the formatting and numbering automatically. Use \texttt{ref} and \texttt{label} for cross-references --- this is Section~\ref{sec:examples}, for example.
 
-
+$$Ctf = \frac{\sum_{i\epsilon V'}  ctf_i}{\sum_{i\epsilon V} ctf_i}$$
+     
 
 \subsection{Adaptive Query Probing}
 
 Use \texttt{tabular} for basic tables. You can upload a figure (JPEG, PNG or PDF) using the files menu. To include it in your document, use the \texttt{includegraphics} command (see the comment below in the source code).
+
+Cosine $tf.idf \geq \gamma $  Where $(\gamma)$ is a threshold value.
+
+$$Recall(s,\gamma) = \frac{\text{No of Significant terms in sample}}{\text{Total No of Significant terms}}$$
+
+
+
+\[ Term = \left\{ 
+  \begin{array}{l l}
+    Significant & \quad \text{if $tf.idf \geq \gamma$}\\
+    \textit{Not Significant} & \quad \text{otherwise}
+  \end{array} \right.\]
+
+
 
 % Commands to include a figure:
 %\begin{figure}
@@ -201,7 +214,13 @@ You can make lists with automatic numbering \dots
 \end{itemize}
 
 
+\section{References}
 
+\begin{enumerate}
+  \item Query Based Sampling of Text Databases. Jamie Callan, Margaret Connell 
+  \item Sample Sizes for Query Probing in Uncooperative Distributed Information Retrieval. Milad Shokouhi, 
+  Falk Scholer, and Justin Zobel. 
+\end{enumerate}
 
 % ------------------------------------------------------------------------------
 % End document
