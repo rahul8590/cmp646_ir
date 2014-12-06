@@ -40,6 +40,8 @@
 \usepackage{amsmath,amsfonts,amsthm,amssymb}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
 % --------------------------------------------------------------------
 % Definitions (do not change this)
 % --------------------------------------------------------------------
@@ -110,15 +112,52 @@ particular collection such that, the broker can decide on which servers to send 
 results. We further explore 2 main sampling techniques which are used to represent collection of sets.
 
 
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+
+\section{Query Probing}
+In non-cooperative environments like distributed systems. We dont get index information from each of the collections that are being fetched. Instead, its the brokers that constantly probe into the collection by sending artificial queries in random order and evaluate returned answers. The answers are called \texttt{probes} 
+and the process is called \texttt{query probing}. For example, if we send a series of single probe queries such as "books", "football", "ibm" and the following number of answers are returned: 1000, 200, 450 . From the results we can guess that, the documents are more likely to talk about Books and IBM rather than football. 
+
+
+The following is the algorithm initially proposed by Callan et al [1], which iteratively discovers the 
+language model of the collections in non-cooperative environments.The language model is updated 
+according to the new terms found in the retrieved documents. The next probe queries are selected from the obtained language model. Probing continues until a stopping criterion is met.
+
+
+
+
+\begin{algorithm}
+\caption{Query Sampling}\label{Query Sampling}
+\begin{algorithmic}[1]
+\Procedure{QS}{}
+\State Select an Initial Query Term
+\State Run Query on the IR System
+\State Reterive Top N Documents as Result.
+\State Update the Resource Description based on characterstics of retreived documents. 
+\BState \emph{loop}:
+\State for words,freq in Documents
+\State Update Learned Resource Descriptions.
+
+\If {$\textit{StopCriteria()} = \textit{Yes}$}
+\State break;
+\Else 
+\State Goto 3
+\EndIf
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+
+
+The algorithm has many open ended choices which needs to be tuned. For example, how to select query terms 
+and how to select documents to examin per query and most importantly \textit{when to stop sampling}.
+Callan et al suggested that assigning $N = 4$  and  $StopCriteria = 75$ Docs i.e examining a total of 300 documents will be a good representation of the collection.
+
+
 \section{Sampling Techniques}
 \label{sec:examples}
-
-
-
-
-\subsection{Query Probing}
-In non-cooperative environments like distributed systems. We dont get index information from each of the collections that are being fetched. Instead, its the brokers that constantly probe into the collection by sending artificial queries in random order and evaluate returned answers. The answers are called \texttt{probes} 
-and the process is called \texttt{query probing}. For example, if we send a series of single probe queries such as "books", "football", "ibm" and the following number of answers are returned: 1000, 200, 450 .
 
 
 \subsection{Static Sampling using Ctf}
@@ -147,6 +186,13 @@ denote their mean. Then as $n$ approaches infinity, the random variables $\sqrt{
 \section{Measure of Effectiveness}
 
 You can make lists with automatic numbering \dots
+
+\subsection{Comparing Ctf Ratios}
+
+
+\subsection{Significant terms}
+
+\subsection{Result Evaluation}
 
 \dots or bullet points \dots
 \begin{itemize}
