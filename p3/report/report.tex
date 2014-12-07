@@ -42,6 +42,7 @@
 \usepackage{float}
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
+\usepackage{wrapfig}
 % --------------------------------------------------------------------
 % Definitions (do not change this)
 % --------------------------------------------------------------------
@@ -160,20 +161,22 @@ Callan et al suggested that assigning $N = 4$  and  $StopCriteria = 75$ Docs i.e
 
 \subsection{Static Sampling using Ctf}
 
-Use \texttt{section}s and \texttt{subsection}s to organize your document. \LaTeX{} handles all the formatting and numbering automatically. Use \texttt{ref} and \texttt{label} for cross-references --- this is Section~\ref{sec:examples}, for example.
+In static sampling technique. The paper uses a Character term frequency as a metric in order to calibrate the sample size. \textit{Ctf} ratio is defined as the ratio of  term occurences in the collection that are covered by terms in the learned resource description. For the learned vocublary $V'$ and actual vocabulary $V$, 
 
 $$Ctf = \frac{\sum_{i\epsilon V'}  ctf_i}{\sum_{i\epsilon V} ctf_i}$$
-     
+
+$ctf_i$ is the number of times the term i occurs in the database (collection term frequency or \textit{ctf}).
+The \textit{ctf} ratio is computed after the stopwords were removed. 
+Experiments performed by Callan et al suggested that the \textit{Ctf} curve usually smoothens at sample of 300 documents. Thus, making a general stopping criteria in query probing algorithms.
+
+
+%Use \texttt{section}s and \texttt{subsection}s to organize your document. \LaTeX{} handles all the formatting and numbering automatically. Use \texttt{ref} and \texttt{label} for cross-references --- this is Section~\ref{sec:examples}, for example.
+
 
 \subsection{Adaptive Query Probing}
 
-Use \texttt{tabular} for basic tables. You can upload a figure (JPEG, PNG or PDF) using the files menu. To include it in your document, use the \texttt{includegraphics} command (see the comment below in the source code).
-
-Cosine $tf.idf \geq \gamma $  Where $(\gamma)$ is a threshold value.
-
-$$Recall(s,\gamma) = \frac{\text{No of Significant terms in sample}}{\text{Total No of Significant terms}}$$
-
-
+In adaptive query technique, we extract the most significant terms from each collection by gathering all terms.
+Cosine $tf.idf \geq \gamma $  Where $(\gamma)$ is a threshold value using Indrie. This information is used after termination of query-based sampling, as a measure of the effectiveness of the collected summaries and of the risk of missing significant terms.
 
 \[ Term = \left\{ 
   \begin{array}{l l}
@@ -183,35 +186,96 @@ $$Recall(s,\gamma) = \frac{\text{No of Significant terms in sample}}{\text{Total
 
 
 
+Queries from the Robust.qrels were choosen randomly. mostly, queries of size 2 - 4 terms were choosen, which were similar to web queries  [Jansen et al., 2000] . In this technique we make an assumption that collections only return a limited number of documents for any given query.
+
+The Recall metric to measure completeness of a term set is defined as,
+
+$$Recall(s,\gamma) = \frac{\text{No of Significant terms in sample}}{\text{Total No of Significant terms}}$$
+
+we gather samples of different sizes ranging from 100 to 4000 documents to iteratively probe into them. In the further sections its explained that the the representation size of 4000 documents would meet the stopping criteria. 
+
+
+
 % Commands to include a figure:
 %\begin{figure}
 %\includegraphics[width=\textwidth]{your-figure's-file-name}
 %\caption{\label{fig:your-figure}Caption goes here.}
 %\end{figure}
 
-\subsection{Mathematics}
-
-\LaTeX{} is great at typesetting mathematics. Let $X_1, X_2, \ldots, X_n$ be a sequence of independent and identically distributed random variables with $\text{E}[X_i] = \mu$ and $\text{Var}[X_i] = \sigma^2 < \infty$, and let
-$$S_n = \frac{X_1 + X_2 + \cdots + X_n}{n}
-      = \frac{1}{n}\sum_{i}^{n} X_i$$
-denote their mean. Then as $n$ approaches infinity, the random variables $\sqrt{n}(S_n - \mu)$ converge in distribution to a normal $\mathcal{N}(0, \sigma^2)$.
+%\subsection{Mathematics}
+%
+%\LaTeX{} is great at typesetting mathematics. Let $X_1, X_2, \ldots, X_n$ be a sequence of independent and identically distributed random variables with $\text{E}[X_i] = \mu$ and $\text{Var}[X_i] = \sigma^2 < \infty$, and let
+%$$S_n = \frac{X_1 + X_2 + \cdots + X_n}{n}
+%      = \frac{1}{n}\sum_{i}^{n} X_i$$
+%denote their mean. Then as $n$ approaches infinity, the random variables $\sqrt{n}(S_n - \mu)$ converge indistribution to a normal $\mathcal{N}(0, \sigma^2)$.
 
 \section{Measure of Effectiveness}
 
-You can make lists with automatic numbering \dots
+All the experiments were performed on Robust dataset. We intend to verify the following hypothesis
+\begin{enumerate}
+\itemsep -0.5em
+\item As long as we keep sampling, the vocabulary continues to grow.
+\item The rate of vocabulary growth is not a good way to estimate collection size.
+\item The risk of missing significant terms is high with traditional sampling.
+\end{enumerate}
 
-\subsection{Comparing Ctf Ratios}
 
+
+%You can make lists with automatic numbering \dots
+
+\subsection{Ctf Ratios}
+Using the static sampling algorithm proposed by Callan et all. The Ctf metric is been calculated for the robust dataset. The fig 2 shows the ctf ratio for the sample sizes ranging from $100$ to $2500$ sampled documents. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{./img/ctf.png}
+\caption{\label{fig:2}Ctf Ratio of Robust Collection.}
+\end{figure}
+
+The expected value of curve smoothing should be from 300. But as we can see from the graph, the smoothening of the curve begins from 500 documents. Thus, if probing is halted after sampling 300 documents,
+the risk of losing significant terms is high. However, this value could be different for different collections, which makes it even more difficult validate \textit{Ctf} as a meteric to sample documents.
 
 \subsection{Significant terms}
 
+For calibrating siginificant terms, samples ranging from $100$ to $4000$ we extracted. Each sample $n$ contains all the documents from sample $n$ - $1$, plus 100 new documents. The initial sample always extracts 100 distinct documents. At any given point, the system calculates the number of unique and significant terms
+available in the samples. We show results for $4000$ documents.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{./img/exp.png}
+\caption{\label{fig:3}Statistics of Robust Collection.}
+\end{figure}
+
+From the fig 3 we can see that a sample of $4000$ documents would suffice for experiment testbed. Since, after $4000$, even though the vocabulary keeps growing, the addition of significant terms smoothens out. 
+Convergence point , slope of the graph
+For $\eta$  subsequent samples the rate of growth in vocabulary becomes less than threshold $\tau$ .
+
+
 \subsection{Result Evaluation}
 
-\dots or bullet points \dots
-\begin{itemize}
-\item Like this,
-\item and like this.
-\end{itemize}
+Retreived Documents 
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{./img/relret.png}
+\caption{\label{fig:3}Statistics of Robust Collection.}
+\end{figure}
+
+%\begin{wrapfigure}{L}{0.7\textwidth}
+%\centering
+%\includegraphics[width=0.70\textwidth]{./img/relret.png}
+%\caption{\label{fig:frog2}This is a figure caption.}
+%\end{wrapfigure}
+
+
+MAP, P@10, P@20
+
+
+\section{Conclusion}
+Adaptive Query probing is a better way for summarizing collections in Distributed Information Retreival. Static sampling sizes using ctf ratio leads to considerable loss of effectiveness. Adaptive query has a better strategy of knowing, when to stop query probing. From the results we can see that, rate of arrival of new terms has
+become constant, relatively few new significant terms of high impact in retrieval are observed.
+
 
 
 \section{References}

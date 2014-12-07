@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.12.13)  6 DEC 2014 02:39
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.12.13)  7 DEC 2014 13:11
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -283,21 +283,32 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \ALG@tmplength=\skip56
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
-) (./report.aux)
+) (/usr/share/texmf-texlive/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen120
+\WF@size=\dimen121
+\c@WF@wrappedlines=\count115
+\WF@box=\box31
+\WF@everypar=\toks31
+Package: wrapfig 2003/01/31  v 3.6
+) (./report.aux
+
+LaTeX Warning: Label `fig:3' multiply defined.
+
+)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
 
 *geometry detected driver: pdftex*
 -------------------- Geometry parameters
@@ -339,7 +350,7 @@ driver: pdftex
 \@twosidetrue \@mparswitchtrue 
 (1in=72.27pt, 1cm=28.45pt)
 -----------------------
-LaTeX Info: Redefining \microtypecontext on input line 79.
+LaTeX Info: Redefining \microtypecontext on input line 80.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -355,30 +366,30 @@ File: mt-cmr.cfg 2008/02/29 v1.9a microtype config. file: Computer Modern Roman
 )
 (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count115
-\scratchdimen=\dimen120
-\scratchbox=\box31
-\nofMPsegments=\count116
-\nofMParguments=\count117
-\everyMPshowfont=\toks31
-\MPscratchCnt=\count118
-\MPscratchDim=\dimen121
-\MPnumerator=\count119
-\everyMPtoPDFconversion=\toks32
+\scratchcounter=\count116
+\scratchdimen=\dimen122
+\scratchbox=\box32
+\nofMPsegments=\count117
+\nofMParguments=\count118
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count119
+\MPscratchDim=\dimen123
+\MPnumerator=\count120
+\everyMPtoPDFconversion=\toks33
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 <./img/ir.png, id=10, 502.87875pt x 275.0275pt>
 File: ./img/ir.png Graphic file (type png)
  <use ./img/ir.png> [1 <./img/ir.png>]
-LaTeX Font Info:    Try loading font information for U+msa on input line 143.
+LaTeX Font Info:    Try loading font information for U+msa on input line 144.
  (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
 (/usr/share/texmf-texlive/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 143.
+LaTeX Font Info:    Try loading font information for U+msb on input line 144.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -386,40 +397,45 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 (/usr/share/texmf-texlive/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 212.
+<./img/ctf.png, id=29, 1019.81pt x 343.2825pt>
+File: ./img/ctf.png Graphic file (type png)
+ <use ./img/ctf.png> [3]
+<./img/exp.png, id=34, 1200.485pt x 342.27875pt>
+File: ./img/exp.png Graphic file (type png)
+ <use ./img/exp.png>
+<./img/relret.png, id=35, 593.21625pt x 584.1825pt>
+File: ./img/relret.png Graphic file (type png)
+ <use ./img/relret.png>
+[4 <./img/ctf.png> <./img/exp.png>] [5 <./img/relret.png>] [6] (./report.aux)
 
+LaTeX Warning: There were multiply-defined labels.
 
-(/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 212.
- [3] (./report.aux) ) 
+ ) 
 Here is how much of TeX's memory you used:
- 5582 strings out of 493848
- 81721 string characters out of 1152822
- 191501 words of memory out of 3000000
- 8730 multiletter control sequences out of 15000+50000
- 14612 words of font info for 71 fonts, out of 3000000 for 9000
+ 5664 strings out of 493848
+ 82619 string characters out of 1152822
+ 193009 words of memory out of 3000000
+ 8787 multiletter control sequences out of 15000+50000
+ 15230 words of font info for 82 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  35i,12n,35p,560b,347s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
-mbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
-/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share
-/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texl
-ive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/t
-ype1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/
-amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
-cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></u
-sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texm
-f-texlive/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-texlive
-/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type
-1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
-fonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
-tt10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on report.pdf (4 pages, 197819 bytes).
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/pub
+lic/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
+s/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.p
+fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-texl
+ive/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-texlive/fonts
+/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pf
+b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on report.pdf (7 pages, 281525 bytes).
 PDF statistics:
- 82 PDF objects out of 1000 (max. 8388607)
+ 99 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 18950 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 18965 words of extra memory for PDF output out of 20736 (max. 10000000)
 
