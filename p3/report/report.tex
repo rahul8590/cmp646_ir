@@ -253,24 +253,37 @@ For $\eta$  subsequent samples the rate of growth in vocabulary becomes less tha
 
 \subsection{Result Evaluation}
 
-Retreived Documents 
-
+We have created 3 sample sets for both the static and adaptive sampling techniques. At each iteration, we used a different set of random queries.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{./img/relret.png}
-\caption{\label{fig:3}Statistics of Robust Collection.}
+\includegraphics[width=0.50\textwidth,height=0.30\textheight]{./img/relret.png}
+\caption{\label{fig:4}Relevant Retreived Docs for Static and Adaptive Sampling.}
 \end{figure}
 
-%\begin{wrapfigure}{L}{0.7\textwidth}
-%\centering
-%\includegraphics[width=0.70\textwidth]{./img/relret.png}
-%\caption{\label{fig:frog2}This is a figure caption.}
-%\end{wrapfigure}
+We use trec eval tool to evaluate the results produced by sample sizes.
+In the fig 4 , we compared 3 different sample sizes generated from static and adaptivefor different random set of queries. We observe that in general the number of retreived documents is higher for adaptive samples as apposed to static. 
 
 
-MAP, P@10, P@20
 
+The following table records MAP, P@10, P@20
+
+\begin{tabular}{l*{3}{c}r}
+Static Samples              & MAP & P@10 & P@20  \\
+\hline
+S1 & 0.0466 & 0.1760 & 0.0880 \\
+S2 & 6 & 3 & 0   \\
+S2 & 6 & 2 & 1   \\
+\hline
+Adaptive Samples \\
+\hline
+S1 & 0.0466 & 0.1760 & 0.0880 \\
+S2 & 6 & 3 & 0   \\
+S2 & 6 & 2 & 1   \\
+\end{tabular}
+
+
+\clearpage
 
 \section{Conclusion}
 Adaptive Query probing is a better way for summarizing collections in Distributed Information Retreival. Static sampling sizes using ctf ratio leads to considerable loss of effectiveness. Adaptive query has a better strategy of knowing, when to stop query probing. From the results we can see that, rate of arrival of new terms has

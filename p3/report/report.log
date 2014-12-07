@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.12.13)  7 DEC 2014 13:11
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.12.13)  7 DEC 2014 15:05
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -290,11 +290,7 @@ Document Style - pseudocode environments for use with the `algorithmicx' style
 \WF@box=\box31
 \WF@everypar=\toks31
 Package: wrapfig 2003/01/31  v 3.6
-) (./report.aux
-
-LaTeX Warning: Label `fig:3' multiply defined.
-
-)
+) (./report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 80.
@@ -403,37 +399,35 @@ File: ./img/ctf.png Graphic file (type png)
 <./img/exp.png, id=34, 1200.485pt x 342.27875pt>
 File: ./img/exp.png Graphic file (type png)
  <use ./img/exp.png>
-<./img/relret.png, id=35, 593.21625pt x 584.1825pt>
+<./img/relret.png, id=35, 571.13374pt x 540.0175pt>
 File: ./img/relret.png Graphic file (type png)
  <use ./img/relret.png>
-[4 <./img/ctf.png> <./img/exp.png>] [5 <./img/relret.png>] [6] (./report.aux)
+[4 <./img/ctf.png> <./img/exp.png>] [5 <./img/relret.png>] [6
 
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 5664 strings out of 493848
- 82619 string characters out of 1152822
- 193009 words of memory out of 3000000
- 8787 multiletter control sequences out of 15000+50000
- 15230 words of font info for 82 fonts, out of 3000000 for 9000
+ 5667 strings out of 493848
+ 82642 string characters out of 1152822
+ 192978 words of memory out of 3000000
+ 8788 multiletter control sequences out of 15000+50000
+ 15281 words of font info for 83 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  35i,12n,35p,560b,347s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-texlive/font
-s/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/pub
-lic/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
-s/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.p
-fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-texl
-ive/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-texlive/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/publ
-ic/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
-cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pf
-b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on report.pdf (7 pages, 281525 bytes).
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx
+10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive
+/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type
+1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
+fonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr
+12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/
+share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/tex
+mf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/
+fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/
+public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfo
+nts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt
+10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on report.pdf (7 pages, 275886 bytes).
 PDF statistics:
  99 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
