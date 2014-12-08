@@ -43,6 +43,8 @@
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
 \usepackage{wrapfig}
+\usepackage{ctable}
+\usepackage{caption}
 % --------------------------------------------------------------------
 % Definitions (do not change this)
 % --------------------------------------------------------------------
@@ -71,7 +73,7 @@
 
 \author{
 		Rahul Ramakrishna\\	
-		University of Massachussets Amherst\\	
+		University of Massachusetts Amherst\\	
 		Dept Of Computer Science\\
         \texttt{rahulram@cs.umass.edu} \\
 }
@@ -186,7 +188,7 @@ Cosine $tf.idf \geq \gamma $  Where $(\gamma)$ is a threshold value using Indrie
 
 
 
-Queries from the Robust.qrels were choosen randomly. mostly, queries of size 2 - 4 terms were choosen, which were similar to web queries  [Jansen et al., 2000] . In this technique we make an assumption that collections only return a limited number of documents for any given query.
+Queries from the Robust.qrels were choosen randomly. mostly, queries of size 2 - 4 terms were choosen, which were similar to web queries  Jansen et al [3] . In this technique we make an assumption that collections only return a limited number of documents for any given query.
 
 The Recall metric to measure completeness of a term set is defined as,
 
@@ -246,9 +248,8 @@ available in the samples. We show results for $4000$ documents.
 \caption{\label{fig:3}Statistics of Robust Collection.}
 \end{figure}
 
-From the fig 3 we can see that a sample of $4000$ documents would suffice for experiment testbed. Since, after $4000$, even though the vocabulary keeps growing, the addition of significant terms smoothens out. 
-Convergence point , slope of the graph
-For $\eta$  subsequent samples the rate of growth in vocabulary becomes less than threshold $\tau$ .
+From the fig 3 we can see that a sample of $4000$ documents would suffice for experiment testbed. Since, after $4000$, even though the vocabulary keeps growing, the addition of significant terms smoothens out. The green vertical line represents Convergence point, where slope of the lines are lesser than a certain threshold $\tau$.
+For $\eta$  subsequent samples the rate of growth in vocabulary becomes less than threshold $\tau$ . Query sampling reaches a good coverage of the collection vocabulary when the slope becomes $\leq \tau$.
 
 
 \subsection{Result Evaluation}
@@ -263,40 +264,46 @@ We have created 3 sample sets for both the static and adaptive sampling techniqu
 
 We use trec eval tool to evaluate the results produced by sample sizes.
 In the fig 4 , we compared 3 different sample sizes generated from static and adaptivefor different random set of queries. We observe that in general the number of retreived documents is higher for adaptive samples as apposed to static. 
-
-
-
 The following table records MAP, P@10, P@20
 
+\begin{table}[!ht]
+\captionsetup{justification=justified,singlelinecheck=off}
+\captionof{table}{Evaluation Metric for Sample Sizes} \label{tab:title} 
 \begin{tabular}{l*{3}{c}r}
-Static Samples              & MAP & P@10 & P@20  \\
-\hline
+\\\toprule
+Static Samples              & MAP & P@10 & P@20  
+\\\toprule
 S1 & 0.0466 & 0.1760 & 0.0880 \\
-S2 & 6 & 3 & 0   \\
-S2 & 6 & 2 & 1   \\
-\hline
-Adaptive Samples \\
-\hline
-S1 & 0.0466 & 0.1760 & 0.0880 \\
-S2 & 6 & 3 & 0   \\
-S2 & 6 & 2 & 1   \\
+S2 & 0.0394 & 0.1751 & 0.0921  \\
+S2 & 0.0576 & 0.2098 & 0.1170   
+\\\toprule
+Adaptive Samples 
+\\\toprule
+S1 & \textbf{0.0541}\textsuperscript{**} & 0.2297 & 0.1149\\
+S2 & 0.0411 & 0.2011 & 0.1103   \\
+S2 & \textbf{0.0801}\textsuperscript{**} & \textbf{0.3813}\textsuperscript{**} & \textbf{0.2010}\textsuperscript{**}   \\
 \end{tabular}
+\end{table}
+
+As we can see, in general adaptive query produces better results that static samples. In some cases, they are significantly better than static samples. In the current adaptive query technique we use $\eta = 3$ and threshold $\tau = 2\%$, which means the probing was stopped after 3 consequetive probes having growth rate less than $2\%$.
 
 
-\clearpage
+\section{Future Work}
+The adaptive query probing technique seems effective for characterizing collections. We could further tune the parameters $\eta$ (no of consequetive probes) and $\tau$ (threshold) and evaluate the results. Decreasing $\eta$ or increasing $\tau$ will probably lead to less effective representations of collections. Also, setting $\tau$ to a very low value will probably only lead to computationally expensive operations and may not give us better results than a higher $\tau$ value.
+
 
 \section{Conclusion}
-Adaptive Query probing is a better way for summarizing collections in Distributed Information Retreival. Static sampling sizes using ctf ratio leads to considerable loss of effectiveness. Adaptive query has a better strategy of knowing, when to stop query probing. From the results we can see that, rate of arrival of new terms has
-become constant, relatively few new significant terms of high impact in retrieval are observed.
+Adaptive Query probing is a better way for summarizing collections in Distributed Information Retreival. Static sampling sizes using ctf ratio leads to considerable loss of effectiveness. Adaptive query has a better strategy of knowing, when to stop query probing. The results indicate that, rate of arrival of new terms becomes constant and relatively few new significant terms of high impact in retrieval are observed. In the experiments conducted, the adaptive query probing has considerably larger initial cost, its debatable whether eventually the effectiveness of query results outweight the initial costs. 
 
 
 
 \section{References}
 
 \begin{enumerate}
-  \item Query Based Sampling of Text Databases. Jamie Callan, Margaret Connell 
-  \item Sample Sizes for Query Probing in Uncooperative Distributed Information Retrieval. Milad Shokouhi, 
-  Falk Scholer, and Justin Zobel. 
+  \item Jamie Callan, Margaret Connell. Query Based Sampling of Text Databases. 
+  \item Milad Shokouhi, Falk Scholer, and Justin Zobel.Sample Sizes for Query Probing in Uncooperative Distributed Information Retrieval. 
+  \item B. J. Jansen, A. Spink, and T. Saracevic. Real life, real users, and real needs: a study
+and analysis of user queries on the web. Inf. Process. Manage., 36(2):207–227, 2000.
 \end{enumerate}
 
 % ------------------------------------------------------------------------------
